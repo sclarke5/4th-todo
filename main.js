@@ -1,7 +1,7 @@
 //select elements for DOM manipulation
 var input = document.querySelector("input[type = 'text']");
 var ul = document.querySelector("ul");
-var spans = document.querySelectorAll("span");
+var spans = document.getElementsByTagName("span");
 
 //adding event listeners
 input.addEventListener("keypress", function(keyPressed){
