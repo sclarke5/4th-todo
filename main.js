@@ -2,6 +2,9 @@
 var input = document.querySelector("input[type = 'text']");
 var ul = document.querySelector("ul");
 var spans = document.getElementsByTagName("span");
+var saveBtn = document.querySelector(".save");
+var clearBtn = document.querySelector(".clear");
+
 
 //adding event listeners
 input.addEventListener("keypress", function(keyPressed){
@@ -38,3 +41,23 @@ ul.addEventListener('click', function(e){
   }
 }, false
 );
+
+//event listener for save/clear buttons
+saveBtn.addEventListener('click', function(){
+  localStorage.setItem('todoList', ul.innerHTML);
+});
+
+clearBtn.addEventListener('click', function(){
+  ul.innerHTML = "";
+  localStorage.removeItem('todoList', ul.innerHTML);
+});
+
+//load todos saved in localStorage
+function loadTodo(){
+  if(localStorage.getItem('todoList')){
+    ul.innerHTML = localStorage.getItem('todoList');
+    deleteTodo();
+  }
+}
+
+loadTodo();
